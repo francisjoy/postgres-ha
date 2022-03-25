@@ -3,7 +3,7 @@ app:
     code: POSTGRESHA
     notify: fjoy@ecloudcontrol.com
 build:
-    version: 13.X
+    version: 13.Y
     env: DEV
     build_file: none
     output_files: output/*.zip
@@ -21,22 +21,19 @@ volumes:
     mount: /appz/data
     name: data
     size: 5Gi
-    class: openebs-replicated
-    matchLabels: false
+    class: microk8s-hostpath
     mode: ReadWriteOnce   
   - claim: postgres-replica-home
     mount: /appz/home
     name: home
     size: 5Gi
-    class: openebs-replicated
-    matchLabels: false
+    class: microk8s-hostpath
     mode: ReadWriteOnce   
   - claim: postgres-replica-backup
     mount: /appz/backup
     name: backup
     size: 5Gi
-    class: openebs-replicated
-    matchLabels: false
+    class: microk8s-hostpath
     mode: ReadWriteOnce  
     
 properties:
